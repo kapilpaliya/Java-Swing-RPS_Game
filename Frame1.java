@@ -1,20 +1,33 @@
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.Image;
-
-class Frame1 extends JFrame {
-    Container c;    JButton start,info,exit;      JLabel label1,label2,label3;    Font font1,font2;
+class Frame1 extends JFrame implements ActionListener{
+    //Variable Declaration
+    Container c;    JButton start,info,exit;      JLabel label1,label2;    Font font1,font2;
+    //Performed Action's Using Implements Function.
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== start){
+            new Frame2();
+        }
+        else if(e.getSource()== exit){
+            System.exit(0);
+        }
+        else if(e.getSource()== info){
+            new Frame10();
+        }
+    }
+    //Main Code Of Crate Frame Or Call Function.
     Frame1(){
-        //Show Screen Center
+        //Take Screen Size(Width And Height) Of All Type Screen.
         Toolkit t = getToolkit();
         Dimension s = t.getScreenSize();
         int width = (int) (s.getWidth()*8/10);
         int height = (int) (s.getHeight()*8/10);
+
         //Create Frame
         setTitle("Rock_Paper_Scissor");
-        setBounds(width/8,height/8,800,500);
+        setBounds(width/4,height/10,800,500);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -40,29 +53,32 @@ class Frame1 extends JFrame {
         label2.setFont(font2);
         c.add(label2);
 
-        //Set Button's
+        //Set Center Button's
         start = new JButton("START");
         start.setBounds(300,200,200,60);
         start.setBackground(Color.green);
+        start.addActionListener(this);
         start.setFont(font2);
         c.add(start);
 
+        //Set Bottom Button's
         info = new JButton("INFO");
         info.setBounds(50,350,200,60);
         info.setBackground(Color.MAGENTA);
         info.setFont(font2);
+        info.addActionListener(this);
         c.add(info);
-
         exit = new JButton("EXIT");
         exit.setBounds(550,350,200,60);
         exit.setBackground(Color.RED);
         exit.setFont(font2);
+        exit.addActionListener(this);
         c.add(exit);
-
     }
-
     public static void main(String[]arg){
-
-        Frame1 a = new Frame1();
+        Frame1 a1 = new Frame1();
     }
 }
+
+
+
