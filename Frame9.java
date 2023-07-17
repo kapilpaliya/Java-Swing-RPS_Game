@@ -1,21 +1,32 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import java.awt.Container;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class Frame9 extends JFrame implements ActionListener{
+    Result re = new Result();
     // Variable Declaration
-    Container c;    JButton paper,scissor,replay,exit;      JLabel label1,label2,label3;    Font font1,font2;    int i,j,k;
-    //Performed Action's Using Implements Function.
+    Container c; JButton paper,scissor,replay,exit;  JLabel label1,label2,label3;
+    Font font1,font2;  String i = "0",j= "0",k= "0";
+//    Performed Action's Using Implements Function.
     @Override
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()== scissor || e.getSource()== paper || e.getSource()== replay){
+        if(e.getSource()== replay){
             new Frame2();
+            this.setVisible(false);
         }
         else if(e.getSource()== exit){
             System.exit(0);
         }
 
     }
-    //Main Code Of Crate Frame Or Call Function.
+//    Main Code Of Crate Frame Or Call Function.
     Frame9(){
         //Take Screen Size(Width And Height) Of All Type Screen.
         Toolkit t = getToolkit();
@@ -40,8 +51,8 @@ public class Frame9 extends JFrame implements ActionListener{
         c.setLayout(null);
 
         //Image Properties Setting
-        ImageIcon img2= new ImageIcon("C:\\Users\\kapil\\OneDrive\\Desktop\\Rock_Paper_Scissor\\I_Paper.png");
-        ImageIcon img3= new ImageIcon("C:\\Users\\kapil\\OneDrive\\Desktop\\Rock_Paper_Scissor\\I_Scissor.png");
+        ImageIcon img2= new ImageIcon(this.getClass().getResource("image\\I_Paper.png"));
+        ImageIcon img3= new ImageIcon(this.getClass().getResource("image\\I_Scissor.png"));
 
         //Label Set
         label1 = new JLabel("*****---You Lost!---*****");
@@ -68,7 +79,7 @@ public class Frame9 extends JFrame implements ActionListener{
         c.add(paper);
 
         //Bottom Label Result Properties Setting
-        label3 = new JLabel("Win = "+i+" | Lost = "+j+" | Draw = "+k);
+        label3 = new JLabel("Win = "+re.win+" | Lost = "+re.lost+" | Draw = "+re.draw);
         label3.setBounds(125,280,550,50);
         label3.setForeground(Color.cyan);
         label3.setFont(font1);

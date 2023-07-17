@@ -1,14 +1,24 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import java.awt.Container;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class Frame6 extends JFrame implements ActionListener{
+    Result re = new Result();
     // Variable Declaration
-    Container c;    JButton draw,replay,exit;      JLabel label1,label3;    Font font1,font2;    int i,j,k;
+    Container c;    JButton draw,replay,exit;      JLabel label1,label3;    Font font1,font2;
     //Performed Action's Using Implements Function.
     @Override
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()== draw || e.getSource()== replay){
+        if(e.getSource()== replay){
             new Frame2();
+            this.setVisible(false);
         }
         else if(e.getSource()== exit){
             System.exit(0);
@@ -32,7 +42,7 @@ public class Frame6 extends JFrame implements ActionListener{
 
         //Font Set
         font1 = new Font("Arial",Font.BOLD,40);
-        font2 = new Font("Arial",Font.BOLD,50);
+        font2 = new Font("Arial",Font.BOLD,25);
 
         //Set Container
         c = getContentPane();
@@ -40,7 +50,7 @@ public class Frame6 extends JFrame implements ActionListener{
         c.setLayout(null);
 
         //Image Properties Setting
-        ImageIcon img4= new ImageIcon("C:\\Users\\kapil\\OneDrive\\Desktop\\Rock_Paper_Scissor\\tay2.png");
+        ImageIcon img4= new ImageIcon(this.getClass().getResource("image\\tay2.png"));
 
         //Label Set
         label1 = new JLabel("*****---Draw!---*****");
@@ -57,7 +67,7 @@ public class Frame6 extends JFrame implements ActionListener{
         c.add(draw);
 
         //Bottom Label Result Properties Setting
-        label3 = new JLabel("Win = "+i+" | Lost = "+j+" | Draw = "+k);
+        label3 = new JLabel("Win = "+re.win+" | Lost = "+re.lost+" | Draw = "+re.draw);
         label3.setBounds(125,290,550,50);
         label3.setForeground(Color.cyan);
         label3.setFont(font1);

@@ -1,6 +1,14 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import java.awt.Container;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 class Frame1 extends JFrame implements ActionListener{
     //Variable Declaration
     Container c;    JButton start,info,exit;      JLabel label1,label2;    Font font1,font2;
@@ -9,12 +17,15 @@ class Frame1 extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource()== start){
             new Frame2();
+            this.setVisible(false);
         }
+
         else if(e.getSource()== exit){
             System.exit(0);
         }
         else if(e.getSource()== info){
             new Frame10();
+            this.setVisible(false);
         }
     }
     //Main Code Of Crate Frame Or Call Function.
@@ -76,7 +87,7 @@ class Frame1 extends JFrame implements ActionListener{
         c.add(exit);
     }
     public static void main(String[]arg){
-        Frame1 a1 = new Frame1();
+        new Frame1();
     }
 }
 

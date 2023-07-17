@@ -1,6 +1,13 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import java.awt.Container;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class Frame10 extends JFrame implements ActionListener{
      //Create Variable
     Container c;    JButton home,exit;      JLabel label1,label2,label3,label4;    Font font1,font2;
@@ -12,6 +19,7 @@ public class Frame10 extends JFrame implements ActionListener{
                }
                else if(e.getSource()== home){
                     new Frame1();
+                    this.setVisible(false);
                }
           }
    public  Frame10(){
