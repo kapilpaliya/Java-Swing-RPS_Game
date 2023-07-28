@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 import java.util.Random;
 
 class Result{
@@ -17,7 +18,6 @@ class Result{
 
 
 public class Frame2 extends JFrame implements ActionListener{
-    Result re = new Result();
     // Variable Declaration
     Container c;    JButton rock,paper,scissor,info,exit;      JLabel label1,label2;    Font font1,font2;
 
@@ -75,9 +75,9 @@ public class Frame2 extends JFrame implements ActionListener{
         c.setLayout(null);
 
         //Image Properties Setting
-        ImageIcon img1= new ImageIcon(this.getClass().getResource("image\\H_Rock.jpg"));
-        ImageIcon img2= new ImageIcon(this.getClass().getResource("\\image\\H_Paper.jpg"));
-        ImageIcon img3= new ImageIcon(this.getClass().getResource("\\image\\H_Scissor.jpg"));
+        ImageIcon img1= new ImageIcon(Objects.requireNonNull(this.getClass().getResource("image\\H_Rock.jpg")));
+        ImageIcon img2= new ImageIcon(Objects.requireNonNull(this.getClass().getResource("\\image\\H_Paper.jpg")));
+        ImageIcon img3= new ImageIcon(Objects.requireNonNull(this.getClass().getResource("\\image\\H_Scissor.jpg")));
 
         //Top Label Setting
         label1 = new JLabel("---SELECT ANY ONE---");
@@ -104,7 +104,7 @@ public class Frame2 extends JFrame implements ActionListener{
         c.add(scissor);
 
         //Bottom Label Result Properties Setting
-        label2 = new JLabel("Win = "+re.win+" | Lost = "+re.lost+" | Draw = "+re.draw);
+        label2 = new JLabel("Win = "+ Result.win +" | Lost = "+ Result.lost +" | Draw = "+ Result.draw);
         label2.setBounds(125,280,550,50);
         label2.setForeground(Color.cyan);
         label2.setFont(font1);
@@ -125,38 +125,37 @@ public class Frame2 extends JFrame implements ActionListener{
         c.add(exit);
     }
 
-
     //Main Logic Of Rock Paper Scissor Game.
     public int result(int user1){
         Random r = new Random();
         int com = r.nextInt(3);
         if(user1==0&&com==2){
-            re.win++;
+            Result.win++;
             return 3;
         }
         else if(user1==1&&com==0){
-            re.win++;
+            Result.win++;
             return 4;
         }
         else if(user1==2&&com==1){
-            re.win++;
+            Result.win++;
             return 5;
         }
         else{
             if(user1==0&&com==1){
-                re.lost++;
+                Result.lost++;
                 return 8;
             }
             else if(user1==1&&com==2){
-                re.lost++;
+                Result.lost++;
                 return 9;
             }
             else if(user1==2&&com==0){
-                re.lost++;
+                Result.lost++;
                 return 7;
             }
             else{
-                re.draw++;
+                Result.draw++;
                 return 6;
             }
         }
@@ -173,6 +172,4 @@ public class Frame2 extends JFrame implements ActionListener{
             default -> System.out.println("No Data Founds");
         }
     }
-
-
 }

@@ -9,8 +9,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
+
 public class Frame6 extends JFrame implements ActionListener{
-    Result re = new Result();
     // Variable Declaration
     Container c;    JButton draw,replay,exit;      JLabel label1,label3;    Font font1,font2;
     //Performed Action's Using Implements Function.
@@ -50,7 +51,7 @@ public class Frame6 extends JFrame implements ActionListener{
         c.setLayout(null);
 
         //Image Properties Setting
-        ImageIcon img4= new ImageIcon(this.getClass().getResource("image\\tay2.png"));
+        ImageIcon img4= new ImageIcon(Objects.requireNonNull(this.getClass().getResource("image\\tay2.png")));
 
         //Label Set
         label1 = new JLabel("*****---Draw!---*****");
@@ -67,7 +68,7 @@ public class Frame6 extends JFrame implements ActionListener{
         c.add(draw);
 
         //Bottom Label Result Properties Setting
-        label3 = new JLabel("Win = "+re.win+" | Lost = "+re.lost+" | Draw = "+re.draw);
+        label3 = new JLabel("Win = "+ Result.win +" | Lost = "+ Result.lost +" | Draw = "+ Result.draw);
         label3.setBounds(125,290,550,50);
         label3.setForeground(Color.cyan);
         label3.setFont(font1);

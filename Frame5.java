@@ -9,8 +9,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
+
 public class Frame5 extends JFrame implements ActionListener{
-    Result re = new Result();
     // Variable Declaration
     Container c;    JButton paper,scissor,replay,exit;      JLabel label1,label2,label3;    Font font1,font2;
     //Performed Action's Using Implements Function.
@@ -50,8 +51,8 @@ public class Frame5 extends JFrame implements ActionListener{
         c.setLayout(null);
 
         //Image Properties Setting
-        ImageIcon img2= new ImageIcon(this.getClass().getResource("image\\I_Paper.png"));
-        ImageIcon img3= new ImageIcon(this.getClass().getResource("image\\I_Scissor.png"));
+        ImageIcon img2= new ImageIcon(Objects.requireNonNull(this.getClass().getResource("image\\I_Paper.png")));
+        ImageIcon img3= new ImageIcon(Objects.requireNonNull(this.getClass().getResource("image\\I_Scissor.png")));
 
         //Label Set
         label1 = new JLabel("*****---You Win!---*****");
@@ -78,7 +79,7 @@ public class Frame5 extends JFrame implements ActionListener{
         c.add(paper);
 
         //Bottom Label Result Properties Setting
-        label3 = new JLabel("Win = "+re.win+" | Lost = "+re.lost+" | Draw = "+re.draw);
+        label3 = new JLabel("Win = "+ Result.win +" | Lost = "+ Result.lost +" | Draw = "+ Result.draw);
         label3.setBounds(125,280,550,50);
         label3.setForeground(Color.cyan);
         label3.setFont(font1);
